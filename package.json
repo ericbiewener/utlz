@@ -1,6 +1,6 @@
 {
   "name": "utlz",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Some very self-centered utilities.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
