@@ -1,16 +1,41 @@
 {
   "name": "utlz",
   "version": "1.1.1",
-  "description": "Personal utilities for non production projects",
-  "main": "index.js",
+  "description": "Some very self-centered utilities.",
+  "main": "dist/main.js",
   "repository": "https://github.com/ericbiewener/utlz",
   "author": "Eric Biewener",
   "license": "MIT",
   "private": false,
   "files": [
-    "index.js"
+    "dist"
   ],
   "scripts": {
-    "test": "node ./test.js"
+    "prepublish": "yarn start && touch dist/.npmignore",
+    "start": "tsc",
+    "dev": "tsc -w",
+    "prettier": "prettier --write \"**/*.{ts,tsx,js}\"",
+    "eslint": "eslint --fix --ext .ts,.tsx ./src"
+  },
+  "devDependencies": {
+    "@types/node": "12.7.11",
+    "eslint": "6.5.1",
+    "eslint-config-ericbiewener-typescript": "5.0.1",
+    "husky": "3.0.8",
+    "lint-staged": "9.4.1",
+    "prettier": "1.18.2",
+    "typescript": "3.6.3"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
