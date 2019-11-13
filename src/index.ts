@@ -20,8 +20,8 @@ export function readDirSync(dir: string) {
 
   for (const name of fs.readdirSync(dir)) {
     if (name === '.DS_Store') continue
-    const filepath = path.join(dir, name)
-    items.push({ name, path: filepath, isFile: isFile(filepath) })
+    const itemPath = path.join(dir, name)
+    items.push({ name, itemPath, isFile: isFile(itemPath) })
   }
 
   return items
