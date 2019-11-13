@@ -30,7 +30,7 @@ export function readDirSync(dir: string) {
 export function defaultSpawnSync(
   cmd: string,
   args: string[],
-  options?: SpawnSyncOptionsWithStringEncoding
+  options?: SpawnSyncOptionsWithStringEncoding,
 ) {
   const { error, stderr, stdout } = spawnSync(cmd, args, options)
   if (error) throw error
