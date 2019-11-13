@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`readDirSync 1`] = `
+Array [
+  Object {
+    "isFile": false,
+    "name": "dir1",
+    "path": "/Users/vn0dimt/Repos/Personal/utlz/src/__tests__/readDirSyncTest/dir1",
+  },
+  Object {
+    "isFile": false,
+    "name": "dir2",
+    "path": "/Users/vn0dimt/Repos/Personal/utlz/src/__tests__/readDirSyncTest/dir2",
+  },
+  Object {
+    "isFile": true,
+    "name": "file1.txt",
+    "path": "/Users/vn0dimt/Repos/Personal/utlz/src/__tests__/readDirSyncTest/file1.txt",
+  },
+  Object {
+    "isFile": true,
+    "name": "file2.txt",
+    "path": "/Users/vn0dimt/Repos/Personal/utlz/src/__tests__/readDirSyncTest/file2.txt",
+  },
+]
+`;

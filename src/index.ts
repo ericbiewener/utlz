@@ -15,13 +15,13 @@ export function isFile(filepath: string) {
   }
 }
 
-export function readDirFilesSync(dir: string) {
+export function readDirSync(dir: string) {
   const items = []
 
   for (const name of fs.readdirSync(dir)) {
+    if (name === '.DS_Store') continue
     const filepath = path.join(dir, name)
-    if (!isFile(filepath) || name === '.DS_Store') continue
-    items.push({ filename: name, filepath })
+    items.push({ name, path: filepath, isFile: isFile(filepath) })
   }
 
   return items
