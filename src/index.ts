@@ -15,7 +15,9 @@ export function isFile(filepath: string) {
   }
 }
 
-export function readDirSync(dir: string) {
+export type ReadDirSyncResult = { name: string; itemPath: string; isFile: boolean }
+
+export function readDirSync(dir: string): ReadDirSyncResult[] {
   const items = []
 
   for (const name of fs.readdirSync(dir)) {
