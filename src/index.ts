@@ -41,8 +41,12 @@ export function defaultSpawnSync(
   return stdout.toString()
 }
 
-export function removeFileExt(filepath: string) {
-  return filepath.slice(0, filepath.lastIndexOf('.'))
+export function removeFileExt(filepath: string, extensions?: string[]) {
+  const ext = path.extname(filepath)
+  if (!ext) return filepath
+  return !extensions || extensions.includes(ext.slice(1))
+    ? filepath.slice(0, -ext.length)
+    : filepath
 }
 
 export function findFileForExtensions(filepath: string, extensions: string[]) {
