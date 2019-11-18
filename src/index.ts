@@ -40,3 +40,15 @@ export function defaultSpawnSync(
   if (stderrStr) throw new Error(stderrStr)
   return stdout.toString()
 }
+
+export function removeFileExt(filepath: string) {
+  return filepath.slice(0, filepath.lastIndexOf('.'))
+}
+
+export function findFileForExtensions(filepath: string, extensions: string[]) {
+  const filepathRoot = removeFileExt(filepath)
+  for (const ext of extensions) {
+    const newPath = `${filepathRoot}.${ext}`
+    if (isFile(newPath)) return newPath
+  }
+}
