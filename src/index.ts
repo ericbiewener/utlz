@@ -58,7 +58,7 @@ export function findFileForExtensions(filepath: string, extensions: string[]) {
   }
 }
 
-export function runCmd(cmd: string, args: string[], options: execa.SyncOptions<null>) {
+export function runCmd(cmd: string, args: string[], options?: execa.SyncOptions<null>) {
   try {
     const { stdout } = execa.sync(cmd, args.filter(Boolean), {
       stdio: 'inherit',
