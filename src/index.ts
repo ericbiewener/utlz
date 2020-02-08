@@ -1,3 +1,4 @@
+import execa from 'execa'
 import fs from 'fs'
 import path from 'path'
 import { spawnSync, SpawnSyncOptionsWithStringEncoding } from 'child_process'
@@ -54,5 +55,19 @@ export function findFileForExtensions(filepath: string, extensions: string[]) {
   for (const ext of extensions) {
     const newPath = `${filepathRoot}.${ext}`
     if (isFile(newPath)) return newPath
+  }
+}
+
+export function runCmd(cmd: string, args: string[], options: execa.SyncOptions<null>) {
+  try {
+    const { stdout } = execa.sync(cmd, args.filter(Boolean), {
+      stdio: 'inherit',
+      ...options,
+    })
+    return stdout
+  } catch (e) {
+    // Catch the error so that we don't have to see the JS stack trace. The executed command will
+    // have had its own output.
+    process.exit(1)
   }
 }

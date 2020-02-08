@@ -23,6 +23,7 @@
     "@babel/core": "7.7.2",
     "@babel/preset-env": "7.7.1",
     "@babel/preset-typescript": "7.7.2",
+    "@types/execa": "2.0.0",
     "@types/jest": "24.0.23",
     "@types/node": "12.12.7",
     "babel-jest": "^24.9.0",
@@ -45,5 +46,8 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "dependencies": {
+    "execa": "4.0.0"
   }
 }
