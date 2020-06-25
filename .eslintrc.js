@@ -1,7 +1,7 @@
 module.exports = {
   extends: 'ericbiewener-typescript',
   env: {
-    browser: false,
+    browser: true,
     es6: true,
     node: true
   }
