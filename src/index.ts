@@ -72,7 +72,8 @@ export function runCmd(cmd: string, args: string[], options?: execa.SyncOptions<
   }
 }
 
-export const createDir = (dirpath: string) => {
-  if (fs.existsSync(dirpath)) return
-  fs.mkdirSync(dirpath)
+export const createDir = (...pathParts: string[]) => {
+  const dirpath = path.join(...pathParts)
+  if (!fs.existsSync(dirpath)) fs.mkdirSync(dirpath)
+  return dirpath
 }
