@@ -72,16 +72,15 @@ export function runCmd(cmd: string, args: string[], options?: execa.SyncOptions<
   }
 }
 
-export const createDir = (...pathParts: string[]) => {
-  const dirpath = path.join(...pathParts)
-
+export const createDir = (dirpath: string, options?: fs.MakeDirectoryOptions) => {
   try {
-    fs.mkdirSync(dirpath, { recursive: true })
+    fs.mkdirSync(dirpath, { recursive: true, ...options })
   } catch (e) {
     if (e.code !== 'EEXIST') throw e
+    return false
   }
 
-  return dirpath
+  return true
 }
 
 export const writeFileIfNew = (filepath: string, data: string = '') => {
