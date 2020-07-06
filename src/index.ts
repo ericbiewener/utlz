@@ -83,3 +83,9 @@ export const createDir = (...pathParts: string[]) => {
 
   return dirpath
 }
+
+export const writeFileIfNew = (filepath: string, data: string = '') => {
+  if (isFile(filepath)) return false
+  fs.writeFileSync(filepath, data)
+  return true
+}
