@@ -104,8 +104,17 @@ class ErrorWithData<D> extends Error {
  *
  * Also provides some sensible error handling. Will throw if there is any stderr.
  */
-export const exe = async (cmd: string, args: string[], options?: execa.SyncOptions<null>) => {
-  const child = execa(cmd, args.filter(Boolean), {
+export const exe = async (
+  cmd: string,
+  args: Record<string, string | null>,
+  options?: execa.SyncOptions<null>,
+) => {
+  const argsArray = []
+  for (const k in args) {
+    if (k != null) argsArray.push(k, args[k])
+  }
+
+  const child = execa(cmd, argsArray, {
     ...options,
     stdio: 'pipe',
   })
